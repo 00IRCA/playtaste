@@ -5,6 +5,7 @@ export const users = pgTable('users', {
   username: text('username').notNull().unique(),
   email: text('email').notNull().unique(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
 export const lists = pgTable('lists', {
@@ -15,6 +16,7 @@ export const lists = pgTable('lists', {
   name: text('name').notNull(),
   description: text('description'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
 export const listGames = pgTable(
