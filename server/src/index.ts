@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { env } from './env';
 import express from 'express';
 import cors from 'cors';
+import healthRouter from './routes/health';
 
 const app = express();
 const PORT = env.PORT;
@@ -9,9 +10,7 @@ const PORT = env.PORT;
 app.use(cors({ origin: env.CLIENT_URL }));
 app.use(express.json());
 
-app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok' });
-});
+app.use('/api/health', healthRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
