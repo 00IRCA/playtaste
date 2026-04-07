@@ -1,14 +1,14 @@
-import { pgTable, serial, text, integer, timestamp, unique } from 'drizzle-orm/pg-core';
+import { pgTable, text, integer, timestamp, unique } from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
-  id: serial('id').primaryKey(),
+  id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
   username: text('username').notNull().unique(),
   email: text('email').notNull().unique(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
 export const lists = pgTable('lists', {
-  id: serial('id').primaryKey(),
+  id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
   userId: integer('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
@@ -20,7 +20,7 @@ export const lists = pgTable('lists', {
 export const listGames = pgTable(
   'list_games',
   {
-    id: serial('id').primaryKey(),
+    id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
     listId: integer('list_id')
       .notNull()
       .references(() => lists.id, { onDelete: 'cascade' }),
