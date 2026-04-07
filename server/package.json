@@ -11,16 +11,18 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "express": "^4.21.0",
-    "drizzle-orm": "^0.38.0",
     "@neondatabase/serverless": "^0.10.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "cors": "^2.8.5"
+    "drizzle-orm": "^0.38.0",
+    "express": "^4.21.0",
+    "ws": "^8.20.0"
   },
   "devDependencies": {
-    "@types/express": "^5.0.0",
     "@types/cors": "^2.8.0",
+    "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
+    "@types/ws": "^8.18.1",
     "drizzle-kit": "^0.29.0",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0"
