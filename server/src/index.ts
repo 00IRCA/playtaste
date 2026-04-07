@@ -6,7 +6,7 @@ import cors from 'cors';
 const app = express();
 const PORT = env.PORT;
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: env.CLIENT_URL }));
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => {
