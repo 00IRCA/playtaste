@@ -17,11 +17,13 @@
     "drizzle-orm": "^0.38.0",
     "express": "^4.21.0",
     "express-async-errors": "^3.1.1",
+    "morgan": "^1.10.1",
     "ws": "^8.20.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.0",
     "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.10",
     "@types/node": "^22.0.0",
     "@types/ws": "^8.18.1",
     "drizzle-kit": "^0.29.0",
