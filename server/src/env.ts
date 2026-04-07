@@ -1,4 +1,4 @@
-const required = ["DATABASE_URL", "IGDB_CLIENT_ID", "IGDB_CLIENT_SECRET"] as const;
+const required = ['DATABASE_URL', 'IGDB_CLIENT_ID', 'IGDB_CLIENT_SECRET'] as const;
 
 for (const key of required) {
   if (!process.env[key]) {
@@ -9,7 +9,7 @@ for (const key of required) {
 
 export const env = {
   DATABASE_URL: process.env.DATABASE_URL as string,
-  PORT: process.env.PORT || "3000",
+  PORT: process.env.PORT || '3000',
   IGDB_CLIENT_ID: process.env.IGDB_CLIENT_ID as string,
   IGDB_CLIENT_SECRET: process.env.IGDB_CLIENT_SECRET as string,
 };

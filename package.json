@@ -8,14 +8,17 @@
   "scripts": {
     "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w client\"",
     "build": "npm run build -w server && npm run build -w client",
-    "lint": "eslint client/src server/src"
+    "lint": "eslint client/src server/src",
+    "format": "prettier --write \"client/src/**/*.{ts,tsx}\" \"server/src/**/*.ts\""
   },
   "devDependencies": {
     "concurrently": "^9.0.0",
     "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.4.0",
+    "prettier": "^3.8.1",
     "typescript-eslint": "^8.58.0"
   }
 }
