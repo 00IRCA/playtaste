@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.0",
+    "arctic": "^3.7.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "drizzle-orm": "^0.38.0",
@@ -21,6 +23,7 @@
     "ws": "^8.20.0"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.0",
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.10",
