@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1744055000000,
+      "tag": "0000_motionless_ogun",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1744055001000,
+      "tag": "0001_overconfident_vengeance",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1744055002000,
+      "tag": "0002_set_updated_at_trigger",
+      "breakpoints": true
+    }
+  ]
+}
