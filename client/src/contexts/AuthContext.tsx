@@ -1,12 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { apiFetch } from '../lib/api';
-
-interface User {
-  userId: number;
-  email: string;
-  displayName: string | null;
-  avatarUrl: string | null;
-}
+import { auth } from '../lib/api';
+import type { User } from '../interfaces/auth';
 
 interface AuthContextValue {
   user: User | null;
@@ -22,7 +16,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const controller = new AbortController();
-    apiFetch<User>('/api/auth/me', { signal: controller.signal })
+    auth
+      .me({ signal: controller.signal })
       .then(setUser)
       .catch((err: unknown) => {
         if (err instanceof Error && err.name !== 'AbortError') setUser(null);
@@ -32,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   async function logout() {
-    await apiFetch('/api/auth/logout', { method: 'POST' });
+    await auth.logout();
     setUser(null);
   }
 
