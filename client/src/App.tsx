@@ -1,9 +1,26 @@
-import { Routes, Route } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
+import { useAuth } from './contexts/AuthContext';
+import Login from './pages/Login';
+
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { user, isLoading } = useAuth();
+  if (isLoading) return null;
+  if (!user) return <Navigate to="/login" replace />;
+  return <>{children}</>;
+}
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<div>Playtaste</div>} />
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <div>Playtaste</div>
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }

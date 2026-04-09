@@ -18,9 +18,7 @@ export async function createSession(userId: number): Promise<string> {
   return id;
 }
 
-export async function validateSession(
-  id: string,
-): Promise<{
+export async function validateSession(id: string): Promise<{
   userId: number;
   email: string;
   displayName: string | null;
