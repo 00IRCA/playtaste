@@ -95,7 +95,7 @@ router.post('/logout', async (req, res) => {
     await deleteSession(sessionId);
     res.clearCookie('session_id');
   }
-  res.sendStatus(200);
+  res.json({ ok: true });
 });
 
 router.get('/me', async (req, res) => {
