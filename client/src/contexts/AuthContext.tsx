@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { auth } from '../lib/api';
 import type { User } from '../interfaces/auth';
 
@@ -11,24 +12,18 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    const controller = new AbortController();
-    auth
-      .me({ signal: controller.signal })
-      .then(setUser)
-      .catch((err: unknown) => {
-        if (err instanceof Error && err.name !== 'AbortError') setUser(null);
-      })
-      .finally(() => setIsLoading(false));
-    return () => controller.abort();
-  }, []);
+  const { data: user = null, isLoading } = useQuery({
+    queryKey: ['auth', 'me'],
+    queryFn: ({ signal }) => auth.me({ signal }),
+    retry: false,
+    throwOnError: false,
+  });
 
   async function logout() {
     await auth.logout();
-    setUser(null);
+    queryClient.setQueryData(['auth', 'me'], null);
   }
 
   return (
