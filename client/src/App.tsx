@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router';
 import { useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
+import Home from './pages/Home';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
@@ -17,7 +18,7 @@ function App() {
         path="/"
         element={
           <ProtectedRoute>
-            <div>Playtaste</div>
+            <Home />
           </ProtectedRoute>
         }
       />

@@ -1,4 +1,5 @@
 import type { User } from '../interfaces/auth';
+import type { Game } from '../interfaces/game';
 
 export const BASE_URL = import.meta.env.VITE_API_URL ?? '';
 
@@ -13,4 +14,10 @@ export async function apiFetch<T>(path: string, options?: RequestInit): Promise<
 export const auth = {
   me: (options?: RequestInit) => apiFetch<User>('/api/auth/me', options),
   logout: () => apiFetch<void>('/api/auth/logout', { method: 'POST' }),
+};
+
+export const games = {
+  search: (q: string, limit = 20) =>
+    apiFetch<Game[]>(`/api/games/search?q=${encodeURIComponent(q)}&limit=${limit}`),
+  get: (id: number) => apiFetch<Game>(`/api/games/${id}`),
 };
