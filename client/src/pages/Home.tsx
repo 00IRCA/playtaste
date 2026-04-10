@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import { games as gamesApi } from '../lib/api';
 
@@ -8,8 +9,9 @@ function coverUrl(url: string): string {
 }
 
 export default function Home() {
-  const [input, setInput] = useState('');
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('q') ?? '';
+  const [input, setInput] = useState(query);
 
   const { data, isFetching, isError } = useQuery({
     queryKey: ['games', 'search', query],
@@ -19,7 +21,12 @@ export default function Home() {
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    setQuery(input.trim());
+    const trimmed = input.trim();
+    if (trimmed) {
+      setSearchParams({ q: trimmed });
+    } else {
+      setSearchParams({});
+    }
   }
 
   return (
