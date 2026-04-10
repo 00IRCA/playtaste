@@ -24,8 +24,6 @@ export default function Home() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Playtaste</h1>
-
       <form onSubmit={handleSearch} className="flex gap-2 mb-8">
         <input
           type="search"
