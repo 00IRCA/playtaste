@@ -3,7 +3,9 @@ import { useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import CollectionForm from './pages/CollectionForm';
 import AuthenticatedLayout from './layouts/AuthenticatedLayout';
+import ProfileLayout from './layouts/ProfileLayout';
 
 function ProtectedRoute() {
   const { user, isLoading } = useAuth();
@@ -19,7 +21,10 @@ function App() {
       <Route element={<ProtectedRoute />}>
         <Route element={<AuthenticatedLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<ProfileLayout />}>
+            <Route index element={<Profile />} />
+            <Route path="new" element={<CollectionForm />} />
+          </Route>
         </Route>
       </Route>
     </Routes>
