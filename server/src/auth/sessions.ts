@@ -1,6 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { db } from '../db/index.js';
 import { sessions, users } from '../db/schema.js';
+import type { User } from '../interfaces/user.js';
 
 const SESSION_DURATION_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 const REFRESH_THRESHOLD_MS = 15 * 24 * 60 * 60 * 1000; // 15 days
@@ -18,12 +19,7 @@ export async function createSession(userId: number): Promise<string> {
   return id;
 }
 
-export async function validateSession(id: string): Promise<{
-  userId: number;
-  email: string;
-  displayName: string | null;
-  avatarUrl: string | null;
-} | null> {
+export async function validateSession(id: string): Promise<User | null> {
   const result = await db
     .select({
       sessionId: sessions.id,
