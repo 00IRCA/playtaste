@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, Outlet } from 'react-router';
 import { useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 import AuthenticatedLayout from './layouts/AuthenticatedLayout';
 
 function ProtectedRoute() {
@@ -18,6 +19,7 @@ function App() {
       <Route element={<ProtectedRoute />}>
         <Route element={<AuthenticatedLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Route>
     </Routes>

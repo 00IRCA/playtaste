@@ -18,13 +18,15 @@ export default function Header() {
 
       <div className="flex items-center gap-3">
         {user?.avatarUrl && (
-          <img
-            src={user.avatarUrl}
-            alt={user.displayName ?? 'User avatar'}
-            width={32}
-            height={32}
-            className="rounded-full"
-          />
+          <Link to="/profile">
+            <img
+              src={user.avatarUrl}
+              alt={user.displayName ?? 'User avatar'}
+              width={32}
+              height={32}
+              className="rounded-full"
+            />
+          </Link>
         )}
         {user?.displayName && <span className="text-sm text-gray-700">{user.displayName}</span>}
         <button onClick={handleLogout} className="text-sm text-gray-500 hover:text-gray-900">
