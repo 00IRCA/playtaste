@@ -19,7 +19,9 @@ export default function Profile() {
       <ul>
         {collections.map((collection) => (
           <li key={collection.id}>
-            <strong>{collection.name}</strong>
+            <Link to={`collections/${collection.id}`}>
+              <strong>{collection.name}</strong>
+            </Link>
             {collection.description && <p>{collection.description}</p>}
             <span>{collection.isPublic ? 'Public' : 'Private'}</span>
           </li>

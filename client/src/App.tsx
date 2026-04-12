@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import CollectionForm from './pages/CollectionForm';
+import CollectionDetail from './pages/CollectionDetail';
+import AddGame from './pages/AddGame';
 import AuthenticatedLayout from './layouts/AuthenticatedLayout';
 import ProfileLayout from './layouts/ProfileLayout';
 
@@ -24,6 +26,8 @@ function App() {
           <Route path="/profile" element={<ProfileLayout />}>
             <Route index element={<Profile />} />
             <Route path="new" element={<CollectionForm />} />
+            <Route path="collections/:id" element={<CollectionDetail />} />
+            <Route path="collections/:id/add" element={<AddGame />} />
           </Route>
         </Route>
       </Route>
