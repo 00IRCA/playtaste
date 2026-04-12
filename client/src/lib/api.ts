@@ -19,6 +19,12 @@ export const auth = {
 
 export const lists = {
   getAll: () => apiFetch<List[]>('/api/lists'),
+  create: (body: { name: string; description?: string; isPublic?: boolean }) =>
+    apiFetch<List>('/api/lists', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    }),
 };
 
 export const games = {
