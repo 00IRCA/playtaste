@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import healthRouter from './routes/health.js';
 import authRouter from './routes/auth.js';
 import gamesRouter from './routes/games.js';
+import listsRouter from './routes/lists.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/api/health', healthRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/games', gamesRouter);
+app.use('/api/lists', listsRouter);
 
 app.use(errorHandler);
 
