@@ -1,4 +1,4 @@
-import { pgTable, text, integer, timestamp, unique } from 'drizzle-orm/pg-core';
+import { pgTable, text, integer, timestamp, boolean, unique } from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
   id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
@@ -29,6 +29,7 @@ export const lists = pgTable('lists', {
     .references(() => users.id, { onDelete: 'cascade' }),
   name: text('name').notNull(),
   description: text('description'),
+  isPublic: boolean('is_public').default(true).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at')
     .defaultNow()
